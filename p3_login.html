@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <nav class="navbar navbar-inverse" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="p1_home.html">Flowers</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="p1_home.html">Home</a></li>
+                <li><a href="p2_grid_flowers.html">Galary</a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+<!-- dem visitor & in ten user -->
+                <li><a href="#" id="visit-count"> Counter:  </a></li>               
+                <li><a href="#" id="userid"> * * * </a></li>
+<!-- dem visitor & in ten user -->
+
+                <li><a href="#">About us</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Setting <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal">Sign in</a>
+                        </li>
+
+                        <li><a href="p3_login.html">Sign up</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#" id="sign-out">Sign out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+    <!-- End of Menu -->
+
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-5">
+                <h2>Sign up</h2>
+                <hr>
+
+                <form action="" role="form" id="formDK" name="formDK">
+
+                    <div class="form-group">
+                        <label for="">email</label>
+                        <input type="mail" class="form-control" id="email" name="email" placeholder="Input email"
+                            value="123@gmail.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">password</label>
+                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Input password"
+                            value="12" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">pasword confirm</label>
+                        <input type="password" class="form-control" id="pass2" name="pass2"
+                            placeholder="Input password confirm" value="123" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">location</label>
+                        <select name="location" id="location" class="form-control" required="required">
+                            <option value="Saigon">Sai Gon</option>
+                            <option value="Ha noi">Ha noi</option>
+                            <option value="Hue">Hue</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger">Submit</button>
+                    <button type="reset" class="btn btn-success">Reset</button>
+                </form>
+
+            </div>
+
+            <div class="col-md-5">
+
+                <div class="page-header">
+                    <h1>Profile <small> information </small></h1>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-body" id="profile">
+                        ...
+                    </div>
+                    <img src="images/hong/hong_5.jpg" alt="" style="width: 80%;">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+
+            //=====================================================
+            // in  so luot visitor count 
+            //=====================================================
+
+            let counter = 1;
+            if (localStorage.getItem("visit-count") != null && localStorage.getItem("visit-count")!="NaN") {
+                counter = parseInt(localStorage.getItem("visit-count")) ;               
+            }
+            else
+            {
+                localStorage.setItem("visit-count", counter);
+            }
+
+            $("#visit-count").html(`<b>Counter: ${counter}</b>`);
+
+
+            //=====================================================
+            // lay ten dang nhap
+            //=====================================================
+            if (sessionStorage.getItem("uid") != null) {
+                let user = sessionStorage.getItem("uid");
+                $("#userid").html(`<b>Hi, ${user} !</b>`);
+            }
+            else {
+                $("#userid").text("* * * * *");
+            }
+
+            //lap trinh su kien nhan link 'sign out'
+            $("#sign-out").click(function () {
+                sessionStorage.removeItem("uid");
+                $("#userid").text("* * * * *");
+            });
+
+
+
+            //lap trinh cho su kien submit
+            $("#formDK").submit(function () {
+                //lay gia tri nhap trong o email
+                let email = $("#email").val();
+
+                //lay gia tri nhap trong o pass va pass2
+                let pass1 = $("#pass").val();
+                let pass2 = $("#pass2").val();
+
+                //lay gia tri nhap trong o location
+                let location = $("#location").val();
+
+                //kiem tra email
+                let re = /^\w+@\w+(\.\w+)+$/
+                if (re.test(email) == false) {
+                    alert("Email ko hop le. \nVui long nhap lai.");
+                    $("#email").focus();
+                    return false;
+                }
+
+                //kiem tra pass1 va pass2
+                if (pass1.trim().length < 3) {
+                    alert("mat khau phai co it nhat 3 ky tu ! \nVui long nhap lai.");
+                    $("#pass").focus();
+                    return false;
+                }
+
+                if (pass1 != pass2) {
+                    alert("mat khau va mat khau nhap lai ko giong nhau !!!");
+                    $("#pass2").focus();
+                    return false;
+                }
+
+                let s = `<b>Email :</b> ${email} <br> `;
+                s += `<b>Password :</b> ${pass2} <br> `;
+                s += `<b>Location :</b> ${location} <br> `;
+
+                $("#profile").html(s);
+
+                alert("Dang ky tai khoan thanh cong !!!");
+                return false;
+
+            });
+        });
+    </script>
+</body>
+
+</html>

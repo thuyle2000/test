@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MyWeb</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Menu -->
+    <nav class="navbar navbar-inverse" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="p1_home.html">Flowers</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="p1_home.html">Home</a></li>
+                <li><a href="p2_grid_flowers.html">Galary</a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+
+            <ul class="nav navbar-nav navbar-right">
+<!-- dem visitor & in ten user -->
+                <li><a href="#" id="visit-count"> Counter:  </a></li>               
+                <li><a href="#" id="userid"> * * * </a></li>
+<!-- dem visitor & in ten user -->
+
+                <li><a href="#">About us</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Setting <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#myModal">Sign in</a>
+                        </li>
+
+                        <li><a href="p3_login.html">Sign up</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#" id="sign-out">Sign out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+    <!-- End of Menu -->
+
+    <div class="container">
+        <h2>Carousel Example</h2>
+
+        <div class="row">
+            <div class="col-md-offset-1 col-md-10">
+
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="1500">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="images/haiduong_1.png" alt="Hoa Hai Duong" style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3>Hoa Hai Duong</h3>
+                                <p>Mau so 1</p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/haiduong_2.jpg" alt="Hoa Hai Duong" style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3>Hoa Hai Duong</h3>
+                                <p>Mau so 2</p>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="images/haiduong_1.png" alt="Hoa Hai Duong" style="width:100%;">
+                            <div class="carousel-caption">
+                                <h3>Hoa Hai Duong</h3>
+                                <p>Mau so 3</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <br><br>
+
+
+        <!-- Trigger the modal with a button -->
+        <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Log in</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="" method="get" id="formLOGIN" name="formLOGIN">
+
+                            <div class="form-group">
+                                <label for="">Username</label>
+                                <input type="text" name="username" id="username" class="form-control" value="tam"
+                                    required="required" title="enter username">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="email" name="email" id="email" class="form-control" value="tam@fpt.edu.vn"
+                                    required="required" title="nhap email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Password</label>
+                                <input type="password" name="pass" id="pass" class="form-control" value="123"
+                                    required="required" title="nhap mat ma">
+                            </div>
+
+                            <div>
+                                <input type="submit" value="submit" class="btn btn-danger">
+                                <input type="reset" value="Reset" class="btn btn-info">
+
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            //dem so luot visitor count khi refresh/ access homepage
+            let counter = 1;
+            console.log(localStorage.getItem("visit-count"));
+
+            if (localStorage.getItem("visit-count") != null && localStorage.getItem("visit-count")!="NaN") {
+                counter = parseInt(localStorage.getItem("visit-count"))+1;               
+            }
+
+            $("#visit-count").html(`<b>Counter: ${counter}</b>`);
+            localStorage.setItem("visit-count", counter);
+
+
+
+            //lay ten dang nhap
+            if (sessionStorage.getItem("uid") != null) {
+                let user = sessionStorage.getItem("uid");
+                $("#userid").html(`<b>Hi, ${user} !</b>`);
+            }
+            else {
+                $("#userid").text("* * * * *");
+            }
+
+            //lap trinh su kien nhan link 'sign out'
+            $("#sign-out").click(function () {
+                sessionStorage.removeItem("uid");
+                $("#userid").text("* * * * *");
+            });
+
+
+
+            //lap trinh su kien submit form dang nhap
+            $("#formLOGIN").submit(function (e) {
+                // e.preventDefault();
+                let user = $("#username").val();
+                sessionStorage.setItem("uid", user);
+                $("#userid").text(user);
+            });
+
+
+
+        });
+    </script>
+
+</body>
+
+</html>
